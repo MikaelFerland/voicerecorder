@@ -58,11 +58,11 @@ namespace VoiceRecorder
             }
         }
 
-        protected override void Dispose(bool disposing)
+        public override void Cleanup()
         {
             Messenger.Default.Send(new ShuttingDownMessage(currentViewName));
-            ((IDisposable)CurrentView.DataContext).Dispose();
-            base.Dispose(disposing);
+            ((ICleanup)CurrentView.DataContext).Cleanup();
+            base.Cleanup();
         }
     }
 }

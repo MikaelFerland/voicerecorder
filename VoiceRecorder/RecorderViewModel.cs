@@ -3,7 +3,7 @@ using System.Windows.Input;
 using System.IO;
 using VoiceRecorder.Audio;
 using GalaSoft.MvvmLight.Messaging;
-using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight;
 
 namespace VoiceRecorder
@@ -23,7 +23,7 @@ namespace VoiceRecorder
             this.recorder.Stopped += OnRecorderStopped;
             beginRecordingCommand = new RelayCommand(BeginRecording,
                 () => recorder.RecordingState == RecordingState.Stopped ||
-                      recorder.RecordingState == RecordingState.Monitoring);
+                      recorder.RecordingState == RecordingState.Monitoring, true);
             stopCommand = new RelayCommand(Stop,
                 () => recorder.RecordingState == RecordingState.Recording);
             recorder.SampleAggregator.MaximumCalculated += OnRecorderMaximumCalculated;

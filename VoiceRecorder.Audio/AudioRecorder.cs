@@ -81,7 +81,8 @@ namespace VoiceRecorder.Audio
         private void TryGetVolumeControl()
         {
             int waveInDeviceNumber = waveIn.DeviceNumber;
-            if (Environment.OSVersion.Version.Major >= 6) // Vista and over
+            //Disable if(true) scope for now
+            if (false & (Environment.OSVersion.Version.Major >= 6)) // Vista and over except Windows 10                
             {
                 var mixerLine = waveIn.GetMixerLine();
                 //new MixerLine((IntPtr)waveInDeviceNumber, 0, MixerFlags.WaveIn);

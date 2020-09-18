@@ -25,7 +25,7 @@ namespace VoiceRecorder
         {
             DispatcherHelper.Initialize();
             var vm = new MainWindowViewModel();
-            this.Closed += (s, e) => vm.Dispose();
+            this.Closed += (s, e) => vm.Cleanup();
             InitializeComponent();
             this.DataContext = vm;
         }
